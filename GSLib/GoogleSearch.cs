@@ -8,7 +8,11 @@ namespace GlobalSLib {
 
         public GoogleSearch() {
             baseSearchString = "http://www.google.com/search?q";
+            baseSearchStringSuffix = "&start={0}";
+            pageMultiplier = 10;
+            searchEngine = EnumSearchEngines.GOOGLE;
         }
+
 
     }
 }

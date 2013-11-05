@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GlobalSLib;
-using PlagiLib;
+using ParserLib;
 using System.Diagnostics;
 
 namespace GS {
@@ -11,20 +11,20 @@ namespace GS {
         static void Main(string[] args) {
 
 
-            ISearch sgoogle = new GoogleSearch();
-            var result = sgoogle.GetSearchResults("inferta analytics");
+            //ISearch sgoogle = new GoogleSearch();
+            //var result = sgoogle.GetSearchResults("anxiety", 2);
 
-            //ISearch sbing = new BingSearch();
-            //var result = sbing.GetSearchResults("inferta analytics");
-            //Console.WriteLine(result.SearchResponseRaw);
+            ISearch sbing = new BingSearch();
+            var result = sbing.GetSearchResults("anxiety", 2);
 
-            PlagiParser pparser = new PlagiParser();
+
+            BaseParser pparser = ParserFactoryStatic.GetParser(result.SearchEngine.ToString());
             var links = pparser.Parse(result.SearchResponseRaw);
 
             if (links != null) {
                 for (int i = 0; i < links.Count; i++) {
-                    Console.WriteLine("links[i]: " + links[i]);
-                    Debug.WriteLine("links[i]: " + links[i]);
+                    //Console.WriteLine("links[i]: " + links[i]);
+                    Debug.WriteLine(string.Format("links[{0}]: {1}", i, links[i]));
                 }
             }            
 

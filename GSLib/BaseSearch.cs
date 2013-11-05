@@ -10,20 +10,44 @@ namespace GlobalSLib {
 
         private string searchString = string.Empty;
 
+        #region ISearch Members
 
         public ISearchResult GetSearchResults(string _searchString) {
             SearchString = _searchString;
-            ISearchResult result = new SearchResult();
+            ISearchResult result = new SearchResult(searchEngine);
             result.SearchString = SearchString;
-            uri = new Uri(string.Format(baseSearchString+"={0}", SearchString));
+            uri = new Uri(string.Format(baseSearchString + "={0}", SearchString));
 
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(uri);
             webRequest.UserAgent = "IE7";
             //webRequest.Proxy = new WebProxy("xx.xx.xx.xx:xx"); // << my proxy address : port
             var response = webRequest.GetResponse();
-            result.SearchResponseRaw = new StreamReader(response.GetResponseStream()).ReadToEnd();            
+            result.SearchResponseRaw = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return result;
         }
+
+        public ISearchResult GetSearchResults(string _searchString, int _numPages) {
+            ISearchResult result = null;
+
+            if (_numPages > -1) {
+                var tmpResult = GetSearchResults(_searchString);
+                if (result == null) {
+                    result = new SearchResult(searchEngine);
+                    result.SearchString = tmpResult.SearchString;
+                    result.SearchResponseRaw = tmpResult.SearchResponseRaw;
+                }
+                for (int i = 1; i < _numPages; i++) {
+                    var tmpBaseSearchSuffix = string.Format(baseSearchStringSuffix, pageMultiplier * i);
+                    tmpResult = GetSearchResults(_searchString + tmpBaseSearchSuffix);
+                    result.SearchResponseRaw += tmpResult.SearchResponseRaw;
+                }
+            }
+
+            return result;
+        }        
+        
+
+        #endregion
        
 
         public Uri uri { get; set; }        
@@ -35,6 +59,9 @@ namespace GlobalSLib {
         }
 
         protected string baseSearchString;
+        protected string baseSearchStringSuffix;
+        protected int pageMultiplier;
+        protected EnumSearchEngines searchEngine;
 
         #region Async Processing - Will be implemented later
         
@@ -47,5 +74,6 @@ namespace GlobalSLib {
         }
 
         #endregion
+
     }
 }

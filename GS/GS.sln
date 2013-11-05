@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalS", "GlobalS.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalSLib", "..\GSLib\GlobalSLib.csproj", "{FA3DEC8A-5BFA-4FC3-BB70-4B2BF611C3F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlagiLib", "..\Plagi\PlagiLib.csproj", "{7A395FAD-747E-450A-A778-00095E53B91E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserLib", "..\Plagi\ParserLib.csproj", "{7A395FAD-747E-450A-A778-00095E53B91E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

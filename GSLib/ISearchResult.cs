@@ -7,5 +7,6 @@ namespace GlobalSLib {
     public interface ISearchResult {
         string SearchResponseRaw { get; set; }
         string SearchString { get; set; }
+        EnumSearchEngines SearchEngine { get; set; }
     }
 }

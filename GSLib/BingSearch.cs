@@ -8,6 +8,9 @@ namespace GlobalSLib {
 
         public BingSearch() {
             baseSearchString = "http://www.bing.com/search?q";
+            baseSearchStringSuffix = "&first={0}";
+            pageMultiplier = 15;
+            searchEngine = EnumSearchEngines.BING;
         }
 
     }
