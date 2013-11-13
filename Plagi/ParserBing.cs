@@ -1,0 +1,26 @@
+﻿using System.Collections.Generic;
+using HtmlAgilityPack;
+
+namespace ParserLib {
+    public class ParserBing: ParserBase {
+
+        public override List<string> Parse(string _stringToParse) {
+
+            List<string> result = null;
+            var doc = CreateHtmlDocument(_stringToParse);
+
+            if (doc != null && doc.DocumentNode != null) {
+                result = new List<string>();
+                var selNodes = doc.DocumentNode.SelectNodes("//div[(@class='sb_tlst')]");
+                foreach (HtmlNode link in selNodes) {                        
+                    HtmlAttribute att = link.FirstChild.FirstChild.Attributes["href"];
+                    if (att != null) result.Add(att.Value);
+                }
+            }
+            
+            return result;  
+
+        }
+
+    }
+}

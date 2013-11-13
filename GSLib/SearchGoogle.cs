@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 namespace GlobalSLib {
-    public class GoogleSearch: BaseSearch {
+    public class SearchGoogle: BaseSearch {
 
-        public GoogleSearch() {
+        public SearchGoogle() {
             baseSearchString = "http://www.google.com/search?q";
             baseSearchStringSuffix = "&start={0}";
             pageMultiplier = 10;

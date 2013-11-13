@@ -2,7 +2,7 @@
 namespace GlobalSLib {
 
     public enum EnumSearchEngines {
-        GOOGLE, BING
+        GOOGLE, BING, YAHOO
     }
 
 }

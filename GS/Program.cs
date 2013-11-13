@@ -11,14 +11,13 @@ namespace GS {
         static void Main(string[] args) {
 
 
-            //ISearch sgoogle = new GoogleSearch();
-            //var result = sgoogle.GetSearchResults("anxiety", 2);
+            //ISearch syahoo = new SearchYahoo();
+            //var result = syahoo.GetSearchResults("anxiety", 2);
 
-            ISearch sbing = new BingSearch();
-            var result = sbing.GetSearchResults("anxiety", 2);
+            ISearch sr = new SearchBing();
+            var result = sr.GetSearchResults("anxiety", 2);
 
-
-            BaseParser pparser = ParserFactoryStatic.GetParser(result.SearchEngine.ToString());
+            ParserBase pparser = ParserFactoryStatic.GetParser(result.SearchEngine.ToString());
             var links = pparser.Parse(result.SearchResponseRaw);
 
             if (links != null) {

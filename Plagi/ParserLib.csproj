@@ -34,12 +34,6 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\GS\packages\ScrapySharp.2.2.61\lib\net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="ScrapySharp">
-      <HintPath>..\GS\packages\ScrapySharp.2.2.61\lib\net40\ScrapySharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ScrapySharp.Core">
-      <HintPath>..\GS\packages\ScrapySharp.2.2.61\lib\net40\ScrapySharp.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
@@ -51,10 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseParser.cs" />
-    <Compile Include="BingParser.cs" />
-    <Compile Include="GoogleParser.cs" />
+    <Compile Include="ParserBase.cs" />
+    <Compile Include="ParserBing.cs" />
+    <Compile Include="ParserGoogle.cs" />
     <Compile Include="ParserFactoryStatic.cs" />
+    <Compile Include="ParserYahoo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
