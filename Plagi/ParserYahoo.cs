@@ -5,7 +5,7 @@ namespace ParserLib {
 
     public class ParserYahoo: ParserBase {
 
-        public override List<string> Parse(string _stringToParse) {
+        public override List<string> ParseGetLinks(string _stringToParse) {
 
             List<string> result = null;
             var doc = CreateHtmlDocument(_stringToParse);

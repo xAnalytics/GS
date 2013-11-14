@@ -6,9 +6,14 @@ using HtmlAgilityPack;
 using System.Diagnostics;
 
 namespace ParserLib {
-    public abstract class ParserBase {
+    public abstract class ParserBase : IParser {
 
-        public abstract List<string> Parse(string _stringToParse);
+        #region IParser
+
+        public abstract List<string> ParseGetLinks(string _stringToParse);
+        public abstract List<IParseResult> Parse(string _stringToParse);
+
+        #endregion
 
         protected virtual HtmlDocument CreateHtmlDocument(string _stringToParse) {
            
@@ -24,6 +29,6 @@ namespace ParserLib {
 
             return result;
         }
-
+        
     }
 }

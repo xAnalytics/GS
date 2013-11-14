@@ -45,8 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IParser.cs" />
+    <Compile Include="IParseResult.cs" />
     <Compile Include="ParserBase.cs" />
     <Compile Include="ParserBing.cs" />
+    <Compile Include="ParseResult.cs" />
     <Compile Include="ParserGoogle.cs" />
     <Compile Include="ParserFactoryStatic.cs" />
     <Compile Include="ParserYahoo.cs" />

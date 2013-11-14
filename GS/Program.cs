@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using GlobalSLib;
 using ParserLib;
 using System.Diagnostics;
@@ -18,7 +15,7 @@ namespace GS {
             var result = sr.GetSearchResults("anxiety", 2);
 
             ParserBase pparser = ParserFactoryStatic.GetParser(result.SearchEngine.ToString());
-            var links = pparser.Parse(result.SearchResponseRaw);
+            var links = pparser.ParseGetLinks(result.SearchResponseRaw);
 
             if (links != null) {
                 for (int i = 0; i < links.Count; i++) {
