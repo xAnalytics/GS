@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSearch.cs" />
+    <Compile Include="HttpWebRequestExt.cs" />
     <Compile Include="SearchBing.cs" />
     <Compile Include="EnumSearchEngines.cs" />
     <Compile Include="SearchGoogle.cs" />

@@ -8,7 +8,9 @@ namespace ParserLib {
 
         string Link { get; set; }
         string Text { get; set; }
+        string TextBold { get; set; }
         string Caption { get; set; }
+        string CaptionBold { get; set; } 
 
     }
 }

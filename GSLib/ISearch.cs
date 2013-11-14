@@ -8,5 +8,6 @@ namespace GlobalSLib {
         string SearchString { get; set; }
         ISearchResult GetSearchResults(string _searchString);
         ISearchResult GetSearchResults(string _searchString, int _numPages);
+        void GetSearchResultsAsync(string _searchString, int _numPages, Action<ISearchResult> _OnResultReady);
     }
 }
