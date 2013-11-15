@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserLib", "..\Plagi\Parse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebModule", "..\WebModule\WebModule.csproj", "{0A241AB7-9806-4342-A61E-D3FE8F1D5234}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessorLib", "..\ProcessorLib\ProcessorLib.csproj", "{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,16 @@ Global
 		{0A241AB7-9806-4342-A61E-D3FE8F1D5234}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0A241AB7-9806-4342-A61E-D3FE8F1D5234}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0A241AB7-9806-4342-A61E-D3FE8F1D5234}.Release|x86.ActiveCfg = Release|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

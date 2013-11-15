@@ -5,31 +5,32 @@ using System;
 using GlobalSLib;
 using ParserLib;
 using System.Diagnostics;
+using ProcessorLib;
 
 namespace GS {
     class Program {
 
+        const int NUM_PAGES = 1;
         static DateTime beginTime;
 
         static void Main(string[] args) {
-
 
             //ISearch syahoo = new SearchYahoo();
             //var result = syahoo.GetSearchResults("anxiety", 2);
 
             ISearch sr = new SearchGoogle();
-
-
             beginTime = DateTime.Now;
 
 #if USE_ASYNC
 
+            //sr.GetSearchResultsAsync("anxiety", NUM_PAGES, ProcessResult);
 
-            sr.GetSearchResultsAsync("anxiety", 5, ProcessResult);
+            IProcessor processor = new ProcessorKWPosition("helpguide.org");
+            sr.GetSearchResultsAsync("anxiety", NUM_PAGES, processor.ProcessResult);
 
             
 #else
-            var result = sr.GetSearchResults("anxiety", 50);
+            var result = sr.GetSearchResults("anxiety", NUM_PAGES);
 
 #if USE_PARSE
 

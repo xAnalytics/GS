@@ -99,6 +99,10 @@
       <Project>{7A395FAD-747E-450A-A778-00095E53B91E}</Project>
       <Name>ParserLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProcessorLib\ProcessorLib.csproj">
+      <Project>{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}</Project>
+      <Name>ProcessorLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

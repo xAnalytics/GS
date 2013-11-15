@@ -5,6 +5,7 @@ using System.Text;
 
 namespace GlobalSLib {
     public interface ISearch {
+        Uri Uri { get; set; }
         string SearchString { get; set; }
         ISearchResult GetSearchResults(string _searchString);
         ISearchResult GetSearchResults(string _searchString, int _numPages);

@@ -12,6 +12,13 @@ namespace GlobalSLib {
 
         #region ISearch Members
 
+        public Uri Uri { get; set; }
+        public string SearchString {
+            get { return searchString; }
+            set {
+                searchString = value.Trim().Replace(" ", "+");
+            }
+        }
         public ISearchResult GetSearchResults(string _searchString) {
             ISearchResult result = new SearchResult(searchEngine);
             result.SearchString = SearchString;
@@ -22,16 +29,7 @@ namespace GlobalSLib {
             var response = webRequest.GetResponse();
             result.SearchResponseRaw = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return result;
-        }
-
-        private HttpWebRequest InitWebRequest(string _searchString) {
-            SearchString = _searchString;
-            Uri = new Uri(string.Format(baseSearchString + "={0}", SearchString));
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(Uri);
-            webRequest.UserAgent = "IE7";
-            return webRequest;
-        }
-
+        }        
         public ISearchResult GetSearchResults(string _searchString, int _numPages) {
             ISearchResult result = null;
 
@@ -51,26 +49,6 @@ namespace GlobalSLib {
 
             return result;
         }
-
-        #endregion
-       
-
-        public Uri Uri { get; set; }        
-        public string SearchString {
-            get { return searchString; }
-            set {                
-                searchString = value.Trim().Replace(" ", "+");
-            }
-        }
-
-        protected string baseSearchString;
-        protected string baseSearchStringSuffix;
-        protected int pageMultiplier;
-        protected EnumSearchEngines searchEngine;
-        protected List<ISearchResult> lSearchResultsCache;
-
-        #region Async Processing 
-
         public void GetSearchResultsAsync(string _searchString, int _numPages, Action<ISearchResult> _OnResultReady) {
             if (string.IsNullOrEmpty(_searchString) || _numPages < 0 || _OnResultReady == null) return;  // <- check parameters
             //prepare common search result cache
@@ -81,17 +59,30 @@ namespace GlobalSLib {
             }
         }
 
+        #endregion      
+
+        #region Protected Members
+
+        protected string baseSearchString;
+        protected string baseSearchStringSuffix;
+        protected int pageMultiplier;
+        protected EnumSearchEngines searchEngine;
+        protected List<ISearchResult> lSearchResultsCache;
+
+        #endregion
+
+        #region Private Methods
+
         private void StartWebRequest(string _searchString, int _index, int _totalReqNum, Action<ISearchResult> _OnResultReady) {
             HttpWebRequest webRequest = InitWebRequest(_searchString);
             HttpWebRequestExt webRequestExt = new HttpWebRequestExt(webRequest, _index, _totalReqNum, _OnResultReady);
             webRequest.BeginGetResponse(new AsyncCallback(FinishWebRequest), webRequestExt);
         }
-
         private void FinishWebRequest(IAsyncResult result) {
 
             HttpWebRequestExt webRequestExt = (result.AsyncState as HttpWebRequestExt);
             HttpWebResponse response = webRequestExt.HttpWebRequest.EndGetResponse(result) as HttpWebResponse;
-            
+
             ISearchResult searchResult = new SearchResult(searchEngine);
             searchResult.SearchResponseRaw = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
@@ -113,6 +104,13 @@ namespace GlobalSLib {
                     webRequestExt.OnResultReady(totalResult);
                 }
             }
+        }
+        private HttpWebRequest InitWebRequest(string _searchString) {
+            SearchString = _searchString;
+            Uri = new Uri(string.Format(baseSearchString + "={0}", SearchString));
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(Uri);
+            webRequest.UserAgent = "IE7";
+            return webRequest;
         }
 
         #endregion
