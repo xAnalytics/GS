@@ -10,7 +10,7 @@ using ProcessorLib;
 namespace GS {
     class Program {
 
-        const int NUM_PAGES = 1;
+        const int NUM_PAGES = 5;
         static DateTime beginTime;
 
         static void Main(string[] args) {
