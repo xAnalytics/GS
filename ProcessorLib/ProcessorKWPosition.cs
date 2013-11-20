@@ -16,7 +16,11 @@ namespace ProcessorLib {
         public string DomainToFindPosition { get; set; }
 
         public override void ProcessResult(ISearchResult _result) {
+            //Debug.WriteLine("ProcessorKWPosition.ProcessResult => Total result came back: " + _result.SearchResponseRaw);
+            Debug.WriteLine("ProcessorKWPosition.ProcessResult => Total result came back");
+
             base.ProcessResult(_result);
+            
             var counter = 0;
             if (parseResults != null) {
                 foreach (var item in parseResults) {
@@ -25,6 +29,7 @@ namespace ProcessorLib {
                         Debug.WriteLine(string.Format("Results contain domain: '{0}' at position: {1}", DomainToFindPosition, counter));
                     }
                 }
+
             }
 
         }

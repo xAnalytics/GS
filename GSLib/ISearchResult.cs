@@ -8,5 +8,6 @@ namespace GlobalSLib {
         string SearchResponseRaw { get; set; }
         string SearchString { get; set; }
         EnumSearchEngines SearchEngine { get; set; }
+        int RequestNum { get; set; }
     }
 }

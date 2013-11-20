@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalS", "GlobalS.csproj", "{46FA22CB-4537-499A-93AF-61CD07B931F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalSConsole", "GlobalSConsole.csproj", "{46FA22CB-4537-499A-93AF-61CD07B931F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalSLib", "..\GSLib\GlobalSLib.csproj", "{FA3DEC8A-5BFA-4FC3-BB70-4B2BF611C3F0}"
 EndProject

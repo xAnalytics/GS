@@ -10,7 +10,7 @@ using ProcessorLib;
 namespace GS {
     class Program {
 
-        const int NUM_PAGES = 5;
+        const int NUM_PAGES = 3;
         static DateTime beginTime;
 
         static void Main(string[] args) {
@@ -68,25 +68,25 @@ namespace GS {
         }
 
 
-        static private void ProcessResult(ISearchResult _result) {
+        //static private void ProcessResult(ISearchResult _result) {
 
-            var endTime = DateTime.Now;
-            var totTime = (endTime - beginTime).TotalMilliseconds;
-            Console.WriteLine("total execution time ms: {0}", totTime);
+        //    var endTime = DateTime.Now;
+        //    var totTime = (endTime - beginTime).TotalMilliseconds;
+        //    Console.WriteLine("total execution time ms: {0}", totTime);
 
 
-            ParserBase pparser = ParserFactoryStatic.GetParser(_result.SearchEngine.ToString());
+        //    //ParserBase pparser = ParserFactoryStatic.GetParser(_result.SearchEngine.ToString());
 
-            var parseResults = pparser.Parse(_result.SearchResponseRaw);
+        //    //var parseResults = pparser.Parse(_result.SearchResponseRaw);
 
-            if (parseResults != null) {
-                for (int i = 0; i < parseResults.Count; i++) {
-                    //Console.WriteLine("links[i]: " + links[i]);
-                    Debug.WriteLine(string.Format("parseResults[{0}]: {1}", i, parseResults[i]));
-                }
-            }
+        //    //if (parseResults != null) {
+        //    //    for (int i = 0; i < parseResults.Count; i++) {
+        //    //        //Console.WriteLine("links[i]: " + links[i]);
+        //    //        Debug.WriteLine(string.Format("parseResults[{0}]: {1}", i, parseResults[i]));
+        //    //    }
+        //    //}
 
-        }
+        //}
 
     }
 }

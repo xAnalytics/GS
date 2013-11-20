@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
+using System.Diagnostics;
 
 namespace GlobalSLib {
     public class BaseSearch: ISearch {
@@ -74,10 +75,18 @@ namespace GlobalSLib {
         #region Private Methods
 
         private void StartWebRequest(string _searchString, int _index, int _totalReqNum, Action<ISearchResult> _OnResultReady) {
-            HttpWebRequest webRequest = InitWebRequest(_searchString);
+            //Debug.WriteLine(string.Format("StartWebRequest: {0}", _index));
+
+            var tmpBaseSearchSuffix = string.Format(baseSearchStringSuffix, pageMultiplier * _index);
+            //tmpResult = GetSearchResults(_searchString + tmpBaseSearchSuffix);
+
+            HttpWebRequest webRequest = InitWebRequest(_searchString + tmpBaseSearchSuffix);
             HttpWebRequestExt webRequestExt = new HttpWebRequestExt(webRequest, _index, _totalReqNum, _OnResultReady);
             webRequest.BeginGetResponse(new AsyncCallback(FinishWebRequest), webRequestExt);
         }
+
+        private readonly object finishLocker = new object();
+
         private void FinishWebRequest(IAsyncResult result) {
 
             HttpWebRequestExt webRequestExt = (result.AsyncState as HttpWebRequestExt);
@@ -85,25 +94,48 @@ namespace GlobalSLib {
 
             ISearchResult searchResult = new SearchResult(searchEngine);
             searchResult.SearchResponseRaw = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            searchResult.RequestNum = webRequestExt.RequestNum;
 
-            lock (lSearchResultsCache) {
-                // if list contains more elements than the Req.Num than we Insert otherwise Add
-                if (lSearchResultsCache.Count > webRequestExt.RequestNum) {
-                    lSearchResultsCache.Insert(webRequestExt.RequestNum - 1, searchResult);
-                } else {
-                    lSearchResultsCache.Add(searchResult);
-                }
-                // here we synch and check if the total request number equals already returned. If YES we raise OnresultReady event
-                if (lSearchResultsCache.Count == webRequestExt.TotalRequestNum && webRequestExt.OnResultReady != null) {
-                    //compose total response
-                    ISearchResult totalResult = new SearchResult(searchEngine) { SearchString = webRequestExt.HttpWebRequest.RequestUri.ToString() };
+            lock (finishLocker) {
 
-                    foreach (var item in lSearchResultsCache) {
-                        totalResult.SearchResponseRaw += item.SearchResponseRaw;
+                lSearchResultsCache.Add(searchResult);
+                //Debug.WriteLine(string.Format("lSearchResultsCache Count: {0} after Added result: {1}", lSearchResultsCache.Count, searchResult.SearchResponseRaw));
+                if (lSearchResultsCache.Count == webRequestExt.TotalRequestNum) {                                        
+                    
+                    if (webRequestExt.OnResultReady != null) {
+                        ISearchResult totalResult = new SearchResult(searchEngine);
+                        var sortedResults = lSearchResultsCache.OrderBy(r => r.RequestNum);
+                        foreach (var item in sortedResults) {
+                            totalResult.SearchResponseRaw += item.SearchResponseRaw;
+                        }
+                        
+                        webRequestExt.OnResultReady(totalResult);
+                    } else {
+                        Debug.WriteLine("BaseSearch.FinishWebRequest: Error! Please assign OnResultReady");
                     }
-                    webRequestExt.OnResultReady(totalResult);
                 }
+
             }
+
+
+            //lock (lSearchResultsCache) {
+            //    // if list contains more elements than the Req.Num than we Insert otherwise Add
+            //    if (lSearchResultsCache.Count > webRequestExt.RequestNum) {
+            //        lSearchResultsCache.Insert(webRequestExt.RequestNum - 1, searchResult);
+            //    } else {
+            //        lSearchResultsCache.Add(searchResult);
+            //    }
+            //    // here we synch and check if the total request number equals already returned. If YES we raise OnresultReady event
+            //    if (lSearchResultsCache.Count == webRequestExt.TotalRequestNum && webRequestExt.OnResultReady != null) {
+            //        //compose total response
+            //        ISearchResult totalResult = new SearchResult(searchEngine) { SearchString = webRequestExt.HttpWebRequest.RequestUri.ToString() };
+
+            //        foreach (var item in lSearchResultsCache) {
+            //            totalResult.SearchResponseRaw += item.SearchResponseRaw;
+            //        }
+            //        webRequestExt.OnResultReady(totalResult);
+            //    }
+            //}
         }
         private HttpWebRequest InitWebRequest(string _searchString) {
             SearchString = _searchString;
