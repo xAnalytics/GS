@@ -127,6 +127,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Proxies.txt" />
     <Content Include="SearchPages\0000.html" />
     <Content Include="SearchPages\111.html" />
     <Content Include="SearchPages\222.html" />

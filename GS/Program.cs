@@ -8,7 +8,7 @@ using ProcessorLib;
 namespace GS {
     class Program {
 
-        const int NUM_PAGES = 11;
+        const int NUM_PAGES = 2;
         static DateTime beginTime;
 
         static void Main(string[] args) {
@@ -23,17 +23,13 @@ namespace GS {
 
             //sr.GetSearchResultsAsync("anxiety", NUM_PAGES, ProcessResult);
 
-            //IProcessor processor = new ProcessorKWPosition("helpguide.org");  
+            IProcessor processor = new ProcessorKWPosition("helpguide.org", ResulsProcessing);  
             //IProcessor processor = new ProcessorKWPosition("phobia-anxiety.org");
 
 
-            var processor = new ProcessorKWPosition("phobia-anxiety.org", ResulsProcessing);
+            //var processor = new ProcessorKWPosition("phobia-anxiety.org", ResulsProcessing);
             sr.GetSearchResultsAsync("anxiety", NUM_PAGES, processor.ProcessResult);
-
-            
-        
-
-
+                    
 #else
             var result = sr.GetSearchResults("anxiety", NUM_PAGES);
 
