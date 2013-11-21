@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessorLib", "..\Processo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc", "..\Mvc\Mvc.csproj", "{807EBD9F-2170-4CA2-87CD-BF3F9DEFD504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asp", "Asp\Asp.csproj", "{F49B6546-E1C0-496D-88D0-965697FF2F12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,16 @@ Global
 		{807EBD9F-2170-4CA2-87CD-BF3F9DEFD504}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{807EBD9F-2170-4CA2-87CD-BF3F9DEFD504}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{807EBD9F-2170-4CA2-87CD-BF3F9DEFD504}.Release|x86.ActiveCfg = Release|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F49B6546-E1C0-496D-88D0-965697FF2F12}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

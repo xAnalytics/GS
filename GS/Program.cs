@@ -10,7 +10,7 @@ using ProcessorLib;
 namespace GS {
     class Program {
 
-        const int NUM_PAGES = 3;
+        const int NUM_PAGES = 11;
         static DateTime beginTime;
 
         static void Main(string[] args) {
@@ -25,7 +25,8 @@ namespace GS {
 
             //sr.GetSearchResultsAsync("anxiety", NUM_PAGES, ProcessResult);
 
-            IProcessor processor = new ProcessorKWPosition("helpguide.org");
+            //IProcessor processor = new ProcessorKWPosition("helpguide.org");  
+            IProcessor processor = new ProcessorKWPosition("phobia-anxiety.org");
             sr.GetSearchResultsAsync("anxiety", NUM_PAGES, processor.ProcessResult);
 
             
