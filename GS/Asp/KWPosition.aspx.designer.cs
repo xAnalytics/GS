@@ -22,13 +22,13 @@ namespace Asp {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtKeyword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtKeyword;
         
         /// <summary>
         /// Label2 control.
@@ -40,13 +40,13 @@ namespace Asp {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtWebsite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtWebsite;
         
         /// <summary>
         /// btnGo control.
@@ -58,6 +58,15 @@ namespace Asp {
         protected global::System.Web.UI.WebControls.Button btnGo;
         
         /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
         /// pnlResult control.
         /// </summary>
         /// <remarks>
@@ -67,12 +76,12 @@ namespace Asp {
         protected global::System.Web.UI.WebControls.Panel pnlResult;
         
         /// <summary>
-        /// dtlResults control.
+        /// txtResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dtlResults;
+        protected global::System.Web.UI.WebControls.TextBox txtResult;
     }
 }

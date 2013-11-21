@@ -107,6 +107,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AppSettingsStatic.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,6 +140,16 @@
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\GSLib\GlobalSLib.csproj">
+      <Project>{FA3DEC8A-5BFA-4FC3-BB70-4B2BF611C3F0}</Project>
+      <Name>GlobalSLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ProcessorLib\ProcessorLib.csproj">
+      <Project>{7A2A060E-D580-4A4A-8BF8-A69FDF788EE8}</Project>
+      <Name>ProcessorLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

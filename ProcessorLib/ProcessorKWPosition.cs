@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GlobalSLib;
 using System.Diagnostics;
+using GlobalSLib;
 
 namespace ProcessorLib {
     
@@ -18,7 +18,7 @@ namespace ProcessorLib {
 
         public override void ProcessResult(ISearchResult _result) {
             //Debug.WriteLine("ProcessorKWPosition.ProcessResult => Total result came back: " + _result.SearchResponseRaw);
-            Debug.WriteLine("ProcessorKWPosition.ProcessResult => Total result came back");
+            //Debug.WriteLine("ProcessorKWPosition.ProcessResult => Total result came back");
             List<int> lPositions = null;
             ProcessorResultKWPosition result = null;
 
@@ -35,11 +35,17 @@ namespace ProcessorLib {
                         }
                     }
                 }
-                result = new ProcessorResultKWPosition(true, null, lPositions);   // <-- returning results to the caller
-            } catch (Exception ex) {                
-                result = new ProcessorResultKWPosition(false, ex, null);                
+                result = new ProcessorResultKWPosition(true, null, lPositions);   // <-- creating successfull result
+
+            } catch (Exception ex) {
+
+                result = new ProcessorResultKWPosition(false, ex, null);   // <-- creating failed result              
+
             } finally {
-                if (OnProcessingFinished != null) OnProcessingFinished(result);
+
+                if (OnProcessingFinished != null) 
+                    OnProcessingFinished(result);  // <-- returning results to the caller
+
             }
         }
     }

@@ -3,8 +3,6 @@
 
 using System;
 using GlobalSLib;
-using ParserLib;
-using System.Diagnostics;
 using ProcessorLib;
 
 namespace GS {
