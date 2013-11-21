@@ -8,6 +8,7 @@ namespace ProcessorLib {
 
     public interface IProcessor {
 
+        Action<object> OnProcessingFinished { get; set; }
         void ProcessResult(ISearchResult _result);
 
     }

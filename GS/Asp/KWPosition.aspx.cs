@@ -10,5 +10,9 @@ namespace Asp {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        protected void btnGo_Click(object sender, EventArgs e) {
+
+        }
     }
 }

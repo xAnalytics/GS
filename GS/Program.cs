@@ -26,10 +26,16 @@ namespace GS {
             //sr.GetSearchResultsAsync("anxiety", NUM_PAGES, ProcessResult);
 
             //IProcessor processor = new ProcessorKWPosition("helpguide.org");  
-            IProcessor processor = new ProcessorKWPosition("phobia-anxiety.org");
+            //IProcessor processor = new ProcessorKWPosition("phobia-anxiety.org");
+
+
+            var processor = new ProcessorKWPosition("phobia-anxiety.org", ResulsProcessing);
             sr.GetSearchResultsAsync("anxiety", NUM_PAGES, processor.ProcessResult);
 
             
+        
+
+
 #else
             var result = sr.GetSearchResults("anxiety", NUM_PAGES);
 
@@ -68,6 +74,20 @@ namespace GS {
 
         }
 
+
+        private static void ResulsProcessing(object args) {
+            if (args == null) return;
+
+            var result = (ProcessorResultKWPosition)args;
+
+            foreach (var item in result.Positions) {
+
+                Console.WriteLine("site contains in position: {0}", item);
+
+            }
+
+
+        }
 
         //static private void ProcessResult(ISearchResult _result) {
 

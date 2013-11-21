@@ -14,7 +14,8 @@
     <asp:TextBox ID="TextBox1" runat="server" Width="200px"></asp:TextBox>
     <asp:Label ID="Label2" runat="server" Text="Website:"></asp:Label>
     <asp:TextBox ID="TextBox2" runat="server" Width="200px"></asp:TextBox>
-    <asp:Button ID="btnGo" runat="server" Text="Go!" Width="100px" />
+    <asp:Button ID="btnGo" runat="server" Text="Go!" Width="100px" 
+        onclick="btnGo_Click" />
 <br />
 <br />
     <asp:Panel ID="pnlResult" runat="server">
