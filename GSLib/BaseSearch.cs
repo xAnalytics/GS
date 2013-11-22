@@ -141,7 +141,7 @@ namespace GlobalSLib {
             SearchString = _searchString;
             Uri = new Uri(string.Format(baseSearchString + "={0}", SearchString));
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(Uri);
-            webRequest.Proxy = new WebProxy("36.73.24.199", 80) ///TODO: Find solution!
+            //webRequest.Proxy = new WebProxy("36.73.24.199", 80) ///TODO: Find solution!
             webRequest.UserAgent = "IE7";
             return webRequest;
         }

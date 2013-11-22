@@ -23,12 +23,12 @@ namespace GS {
 
             //sr.GetSearchResultsAsync("anxiety", NUM_PAGES, ProcessResult);
 
-            IProcessor processor = new ProcessorKWPosition("helpguide.org", ResulsProcessing);  
+            IProcessor<ProcessorResultKWPosition> processor = new ProcessorKWPosition("helpguide.org", ResulsProcessing);  
             //IProcessor processor = new ProcessorKWPosition("phobia-anxiety.org");
-
+            
 
             //var processor = new ProcessorKWPosition("phobia-anxiety.org", ResulsProcessing);
-            sr.GetSearchResultsAsync("anxiety", NUM_PAGES, processor.ProcessResult);
+            sr.GetSearchResultsAsync("anxiety", NUM_PAGES, processor.ProcessResultAsync);
                     
 #else
             var result = sr.GetSearchResults("anxiety", NUM_PAGES);

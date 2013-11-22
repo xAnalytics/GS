@@ -6,10 +6,11 @@ using GlobalSLib;
 
 namespace ProcessorLib {
 
-    public interface IProcessor {
+    public interface IProcessor<T> {
 
         Action<object> OnProcessingFinished { get; set; }
-        void ProcessResult(ISearchResult _result);
+        void ProcessResultAsync(ISearchResult _result);
+        T ProcessResult(ISearchResult _result);
 
     }
 
