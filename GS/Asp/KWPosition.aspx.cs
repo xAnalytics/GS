@@ -13,14 +13,14 @@ using System.Threading;
 namespace Asp {
     public partial class KWPosition : System.Web.UI.Page {
 
-        private int num_pages;
+        //private int num_pages;
         private string resultStr = string.Empty;
         
         protected void Page_Load(object sender, EventArgs e) {
             //var tmp = AppSettingsStatic.GetSettingValue("NUM_PAGES");
             //int.TryParse(tmp, out num_pages); 
 
-            num_pages = 2;
+          //  num_pages = 2;
         }
 
         protected void btnGo_Click(object sender, EventArgs e) {
